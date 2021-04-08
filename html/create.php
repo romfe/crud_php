@@ -1,7 +1,7 @@
 <?php // file that makes inputs to the database
     include '../db.php';
     function invalidInput($variableName){
-        echo '<script>alert("Invalid input for $variableName variable. Please check the imput rules and try again.")</script>';
+        echo '<script>alert("Invalid input for $variableName field. Please check the input rules and try again.")</script>';
         header("Location: index.php");
         exit(0);
     }
