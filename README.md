@@ -10,3 +10,6 @@ Output:
 ## Simples implementação de uma aplicação web para gerenciamento de produtos usando PHP, CSS e MySQL.
 
 ### Criação do banco de dados
+Foi utilizado MySQL para criação do banco de dados. As seguintes linhas de comando foram executadas:
+
+Output:
