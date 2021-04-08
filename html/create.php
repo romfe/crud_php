@@ -18,7 +18,7 @@
     if(isset($stock) === FALSE){
         invalidInput("Stock");
     }
-    if(isset($_POST['submit']) and isset($_FILES['product_image'])){
+    if(isset($_POST['submit']) and isset($_FILES['product_image'])){ //checking to see if the image was selected
         $img_name = $_FILES['product_image']['name']; //getting the image name
         $img_size = $_FILES['product_image']['size']; //getting the image size
         $tmp_name = $_FILES['product_image']['tmp_name']; //getting the file full name
