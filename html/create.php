@@ -9,7 +9,6 @@
     $description = $_POST["description"];
     $stock = $_POST["stock"];
 
-    // AINDA FALTAM OS MÉTODOS DA IMAGEM
     if((isset($title) === FALSE) or (strlen($title) > 25) or (strlen($variableName)< 6)){
         invalidInput("Title");
     }
@@ -22,7 +21,7 @@
     if(isset($_POST['submit']) and isset($_FILES['product_image'])){
         $img_name = $_FILES['product_image']['name']; //getting the image name
         $img_size = $_FILES['product_image']['size']; //getting the image size
-        $tmp_name = $_FILES['product_image']['tmp_name']; 
+        $tmp_name = $_FILES['product_image']['tmp_name']; //getting the file full name
         $img_error = $_FILES['product_image']['error']; //getting the image error
         $img_extension = pathinfo($img_name, PATHINFO_EXTENSION); // getting the image extension
         $img_extension = strtolower($img_extension);
