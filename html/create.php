@@ -1,7 +1,7 @@
 <?php // file that makes inputs to the database
     include '../db.php';
     function invalidInput($variableName){
-        echo '<script>alert("Invalid input for $variableName field. Please check the input rules and try again.")</script>';
+        echo '<script>alert("Invalid input for ' . $variableName . ' field. Please check the input rules and try again.")</script>';
         header("Location: index.php");
         exit(0);
     }
@@ -40,7 +40,7 @@
     }
     
     
-    $sql = "instert into produtos(title, description, image, stock) values ('$title', '$description', '$image', '$stock')";
+    $sql = "instert into products(title, description, image, stock) values ('$title', '$description', '$new_img_name', '$stock')";
     $conn->query($sql);
     $conn->close();
     header("location: index.php");
