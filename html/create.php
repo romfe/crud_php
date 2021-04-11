@@ -4,17 +4,17 @@
         echo '<script>alert("Invalid input for ' . $variableName . ' field. Please check the input rules and try again.")</script>';
 
         echo '<script>location.href="index.php"</script>';
-        //exit(0);
+
     }
     print '<pre>';
     print_r($_POST);
     print '</pre>';
 
-    $title = $_POST["title"];
+    $title = $_POST["title"]; // getting the form values
     $description = $_POST["description"];
     $stock = $_POST["stock"];
 
-    if((isset($title) === FALSE) or (strlen($title) > 25) or (strlen($title)< 6)){
+    if((isset($title) === FALSE) or (strlen($title) > 25) or (strlen($title)< 6)){ // checking for restrictions
         invalidInput("Title");
     }
     if(strlen($description)>4000){
@@ -29,27 +29,24 @@
         $tmp_name = $_FILES['product_image']['tmp_name']; //getting the file full name
         $img_error = $_FILES['product_image']['error']; //getting the image error
         $img_extension = pathinfo($img_name, PATHINFO_EXTENSION); // getting the image extension
-        print '<pre>';
-        print_r($img_extension);
-        print '</pre>';
         $img_extension = strtolower($img_extension);
         $allowed_extensions = array("jpg", "jpeg", "gif", "png");
-        if (($img_error === 0) and ($img_size <= 625000000) and (in_array($img_extension, $allowed_extensions))){
+        if (($img_error === 0) and ($img_size <= 5000000) and (in_array($img_extension, $allowed_extensions))){
             
             $new_img_name = uniqid("IMG-", true).'.'.$img_extension;
             $upload_path = '../images/'.$new_img_name;
             move_uploaded_file($tmp_name, $upload_path);
             
         }else{
-            invalidInput("Image corrupted"); // REMINDER: FIX ERROR ANNOTATIONS
+            invalidInput("Image"); 
         }
     }else{
-        invalidInput("Unknown Image");
+        invalidInput("Image not found");
     }
     
     
-    $sql = "insert into products(title, description, image, stock) values ('$title', '$description', '$new_img_name', '$stock')";
-    $conn->query($sql);
+    $sql = "insert into products(title, description, image, stock) values ('$title', '$description', '$new_img_name', '$stock')"; //preparing sql function
+    $conn->query($sql); //sql execution
     $conn->close();
     echo '<script>location.href="index.php"</script>';
 ?>

@@ -8,8 +8,10 @@
             modal = $('#update-modal-body');
             upd = '<form class="form-inline" action="update.php" method="POST" enctype="multipart/form-data" id="form-update">';
             upd += '<td><input type="text" class="form-control" name="title" value="'+ $('#title_'+ rowId).html() +'"></td>';
+            upd += '<label for="title">Title:</label>';
             upd += '<td><input type="file" name="product_image" class="btn btn-primary"></td>';
             upd += '<td><input type="text" class="form-control" name="description" value="'+ $('#description_'+ rowId).html() +'">';
+            upd += '<label for="description">Description:</label>';
             upd += '</td><td><input type="number" class="form-control" name="stock" value="'+ $('#stock_'+ rowId).html() +'"></td>';
             upd += '<td><button type="submit"  name="submit" class="btn btn-primary">Save</button></td>';
             upd += '<input type="hidden" name="id" value="'+ rowId +'"></form>';
@@ -32,23 +34,28 @@
         function submitUpdate(){
                 $('#form-update').submit();
         }
-
+       
     </script>
-
+    <style>
+        img{
+            max-width: 200px;
+            max-height: 200px;
+        }
+    </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     </head>
     <body>
-        <div class="container">
-            <h1>Product Stock Manager</h1>
-            <h3>Use this form to read, create, delete and update product records</h3>
-            <p><strong>Input rules:</strong></p>
-            <ul>
-                <li>Title must be more than 6 and less than 25 characters long</li>
-                <li>Description must be less than 4000 characters long</li>
-                <li>Stock is a required input</li>
-                <li>Image must have up to 5MB in size and in one of the following formats: .gif .jpg or .png</li>
+        <div class="px-4 py-5 my-5 text-center">
+            <h1>Product Stock Manager</h1><br>
+            <h3>Use this form to read, create, delete and update product records</h3><br>
+            <h3><strong>Input rules:</strong></h3><br>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-primary">Title must be more than 6 and less than 25 characters long</li>
+                <li class="list-group-item list-group-item-primary">Description must be less than 4000 characters long</li>
+                <li class="list-group-item list-group-item-primary">Stock is a required input</li>
+                <li class="list-group-item list-group-item-primary">Image must have up to 5MB in size and in one of the following formats: .gif .jpg or .png</li>
             </ul>
             
             <form class="form-inline m-2" action="create.php" method="POST" enctype="multipart/form-data">
