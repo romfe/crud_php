@@ -15,7 +15,8 @@
                 <li>Image must have up to 5MB in size and in one of the following formats: .gif .jpg or .png</li>
             </ul>
             
-            <form class="form-inline m-2" action="create.php" method="POST">
+            <form class="form-inline m-2" action="create.php" method="POST" enctype="multipart/form-data">
+
                 <label for="title">Title:</label>
                 <input type="text" class="form-control m-2" id="title" name="title"> 
                 
@@ -29,7 +30,7 @@
                 
                 <input type="file" name="product_image" class="btn btn-primary">
 
-                <button type="submit" class="btn btn-primary">Add Product</button>
+                <button type="submit" class="btn btn-primary" name="submit">Add Product</button>
             </form>
 
             <table class="table">
