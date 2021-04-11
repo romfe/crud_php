@@ -6,13 +6,12 @@
         echo '<script>location.href="index.php"</script>';
         //exit(0);
     }
-    print '<pre>';
-    print_r($_POST);
-    print '</pre>';
+
 
     $title = $_POST["title"];
     $description = $_POST["description"];
     $stock = $_POST["stock"];
+    $entry_id = $_POST["id"];
 
     if((isset($title) === FALSE) or (strlen($title) > 25) or (strlen($title)< 6)){
         invalidInput("Title");
@@ -48,7 +47,7 @@
     }
     
     
-    $sql = "insert into products(title, description, image, stock) values ('$title', '$description', '$new_img_name', '$stock')";
+    $sql = "update products set title='$title', description='$description', image='$new_img_name', stock='$stock' where id='$entry_id'";
     $conn->query($sql);
     $conn->close();
     echo '<script>location.href="index.php"</script>';
