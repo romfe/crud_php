@@ -5,28 +5,39 @@
 
     <script>
         function openUpdateModal(rowId){
-            modal = $('#updateModal');
-            upd = '<form class="form-inline" action="update.php" method="POST" enctype="multipart/form-data">';
+            modal = $('#update-modal-body');
+            upd = '<form class="form-inline" action="update.php" method="POST" enctype="multipart/form-data" id="form-update">';
             upd += '<td><input type="text" class="form-control" name="title" value="'+ $('#title_'+ rowId).html() +'"></td>';
             upd += '<td><input type="file" name="product_image" class="btn btn-primary"></td>';
             upd += '<td><input type="text" class="form-control" name="description" value="'+ $('#description_'+ rowId).html() +'">';
             upd += '</td><td><input type="number" class="form-control" name="stock" value="'+ $('#stock_'+ rowId).html() +'"></td>';
-            upd += '<td><button type="submit" name="submit" class="btn btn-primary">Save</button></td>';
+            upd += '<td><button type="submit"  name="submit" class="btn btn-primary">Save</button></td>';
             upd += '<input type="hidden" name="id" value="'+ rowId +'"></form>';
             modal.html(upd);
+            $('#updateModal').modal('show');
         } 
 
         function deleteRow(rowId){
             if(confirm('Are you sure you want to delete this entry?')){
-                //$.post('delete.php', {'id':rowId});
+
                 form = jQuery('<form action="delete.php" method="POST"></form>'); 
-                form.html('<input value="3" name="id">'); 
+                form.html('<input value="'+rowId+'" name="id">'); 
+                $('body').append(form);
                 form.submit();
             }
         }
+        function closeModal(){
+            $('#updateModal').modal('hide');
+        }
+        function submitUpdate(){
+                $('#form-update').submit();
+        }
 
     </script>
-    
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     </head>
     <body>
         <div class="container">
@@ -63,9 +74,23 @@
                     <?php include 'read.php';?>
                 </tbody>
             </table>
-            <div id="updateModal">
-                
-            </div>
+
+            <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update entry</h5>
+                        <button type="button" class="close" data-dismiss="modal" onclick="closeModal()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="update-modal-body">
+                        
+                    </div>
+  
+                    </div>
+                </div>
+                </div>
         </div>
     </body>
 </html>
