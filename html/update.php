@@ -1,10 +1,9 @@
 <?php // file that makes inputs to the database
     include '../db.php';
-    function invalidInput($variableName){
+    function invalidInput($variableName){ //function that handles input errors.
         echo '<script>alert("Invalid input for ' . $variableName . ' field. Please check the input rules and try again.")</script>';
 
         echo '<script>location.href="index.php"</script>';
-        //exit(0);
     }
 
 
@@ -13,7 +12,7 @@
     $stock = $_POST["stock"];
     $entry_id = $_POST["id"];
 
-    if((isset($title) === FALSE) or (strlen($title) > 25) or (strlen($title)< 6)){
+    if((isset($title) === FALSE) or (strlen($title) > 25) or (strlen($title)< 6)){ //input verification
         invalidInput("Title");
     }
     if(strlen($description)>4000){
@@ -40,7 +39,7 @@
             move_uploaded_file($tmp_name, $upload_path);
             
         }else{
-            invalidInput("Image corrupted"); // REMINDER: FIX ERROR ANNOTATIONS
+            invalidInput("Image corrupted"); 
         }
     }else{
         invalidInput("Unknown Image");

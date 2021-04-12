@@ -1,6 +1,6 @@
 <?php
-include '../db.php';
-$sql = "select * from products";
+include '../db.php'; //connection to the database
+$sql = "select * from products"; //sql query
 $result = $conn->query($sql);
 echo '<div class="container-fluid">';
 echo '<div class="row-fluid">';
@@ -12,19 +12,19 @@ echo "<td>Description</td>";
 echo "<td>Stock</td>";
 echo "<td>Action</td>";
 echo "</tr>";
-while($row = $result->fetch_assoc()){
+while($row = $result->fetch_assoc()){ // organizing the query in a table
 
-        echo '<tr class="table-display">';
-        echo "<td id='title_".$row['id']."'>" . $row['title'] . "</td>";
-        echo "<td><img src=../images/" . $row['image'] . "></img></td>";
-        echo "<td id='description_".$row['id']."'>" . $row['description'] . "</td>";
-        echo "<td id='stock_".$row['id']."'>" . $row['stock'] . "</td>";
-        echo '<td><a class="btn btn-primary" onclick="openUpdateModal(' . $row['id'] . ')" role="button">Update</a><a class="btn btn-danger" onclick="deleteRow(' . $row['id'] . ')" role="button">Delete</a></td>';
-        echo "</tr>";
+    echo '<tr class="table-display">';
+    echo "<td id='title_".$row['id']."'>" . $row['title'] . "</td>";
+    echo "<td><img src=../images/" . $row['image'] . "></img></td>";
+    echo "<td id='description_".$row['id']."'>" . $row['description'] . "</td>";
+    echo "<td id='stock_".$row['id']."'>" . $row['stock'] . "</td>";
+    echo '<td><a class="btn btn-primary" onclick="openUpdateModal(' . $row['id'] . ')" role="button">Update</a><a class="btn btn-danger" onclick="deleteRow(' . $row['id'] . ')" role="button">Delete</a></td>';
+    echo "</tr>";
 
 }
 echo "</div>";
 echo "</div>";
 echo "</div>";
-$conn->close();
+$conn->close(); //closing the sql connection
 ?>
