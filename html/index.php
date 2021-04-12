@@ -4,7 +4,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <script>
-        function openUpdateModal(rowId){
+        function openUpdateModal(rowId){ //function that controls the Modal to update the selected registry
             modal = $('#update-modal-body');
             upd = '<form class="form-inline" action="update.php" method="POST" enctype="multipart/form-data" id="form-update">';
             upd += '<label for="title">Title:</label>';
@@ -21,7 +21,7 @@
             $('#updateModal').modal('show');
         } 
 
-        function deleteRow(rowId){
+        function deleteRow(rowId){ //function that triggers registry deletion
             if(confirm('Are you sure you want to delete this entry?')){
 
                 form = jQuery('<form action="delete.php" method="POST"></form>'); 
@@ -38,17 +38,17 @@
         }
        
     </script>
-    <style>
-        img{
+    <style> /*image size restrictions*/
+        img{ 
             max-width: 150px;
             max-height: 150px;
         }
-    </style>
+    </style> <!-- bootstrap importing --> 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     </head>
-    <body>
+    <body><!-- instructions section --> 
         <div class="container-fluid instructions">
             <div class="row-fluid row-instructions">
                 <div class="col-fluid col-instructions">
@@ -66,7 +66,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid input">                
+        <div class="container-fluid input"> <!-- input form -->                
             <form class="form-inline m-2" action="create.php" method="POST" enctype="multipart/form-data">
                 <div class="row-fluid row-form">
                     <div class="col-fluid yay">
@@ -76,12 +76,9 @@
                         <input type="text" class="form-control m-2" id="description" name="description">
                         <label for="stock">Stock:</label>
                         <input type="number" class="form-control m-2" id="stock" name="stock">  
-                   
-                       
-             
-                            Select an image for the product: <br><br>
-                            <input type="file" name="product_image" class="btn btn-primary">
-                            <button type="submit" class="btn btn-success" name="submit">Add Product</button>
+                        Select an image for the product: <br><br>
+                        <input type="file" name="product_image" class="btn btn-primary">
+                        <button type="submit" class="btn btn-success" name="submit">Add Product</button>
                     </div>
                 </div>
 
@@ -89,14 +86,14 @@
 
             
         </div>
-        <div class="container container-products">
+        <div class="container container-products"><!-- Table to show the database entries --> 
             <h3>Current Products:</h3>
             <table class="table">
                 <tbody>
                     <?php include 'read.php';?>
                 </tbody>
             </table>
-
+            <!-- modal that updates the database entries --> 
             <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -107,12 +104,10 @@
                             </button>
                         </div>
                         <div class="modal-body" id="update-modal-body">
-                        
                         </div>
                     </div>
                 </div>
             </div>
-                
         </div>
     </body>
 </html>
