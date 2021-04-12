@@ -46,7 +46,7 @@
     
     
     $sql = "insert into products(title, description, image, stock) values ('$title', '$description', '$new_img_name', '$stock')"; //preparing sql function
-    $conn->query($sql); //sql execution
+    $conn->query($sql); 
     $conn->close();
     echo '<script>location.href="index.php"</script>';
 ?>

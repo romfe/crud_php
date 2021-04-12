@@ -2,6 +2,9 @@
 include '../db.php';
 $sql = "select * from products";
 $result = $conn->query($sql);
+echo '<div class="container-fluid">';
+echo '<div class="row-fluid">';
+echo '<div class="col-fluid">';
 echo "<tr>";
 echo "<td>Title</td>";
 echo "<td>Image</td>";
@@ -20,5 +23,8 @@ while($row = $result->fetch_assoc()){
         echo "</tr>";
 
 }
+echo "</div>";
+echo "</div>";
+echo "</div>";
 $conn->close();
 ?>
