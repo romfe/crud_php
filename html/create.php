@@ -6,9 +6,6 @@
         echo '<script>location.href="index.php"</script>';
 
     }
-    print '<pre>';
-    print_r($_POST);
-    print '</pre>';
 
     $title = $_POST["title"]; // getting the form values
     $description = $_POST["description"];
