@@ -12,8 +12,8 @@ mysql> create table products(id int not null auto_increment primary key,  title 
 ```
 ### Next steps:
 This project can be improved by:
-    -Sanitizing the user inputs to prevent SQL injection attacks.
-    -Adding a file management system that deletes the removed pictures from the "images" directory. Currently, only the table registry is deleted.
+    -Sanitizing the user inputs to prevent SQL injection attacks.  
+    -Adding a file management system that deletes the removed pictures from the "images" directory. Currently, only the table registry is deleted.  
 
 
 # Português(BR)
@@ -30,5 +30,5 @@ mysql> create table products(id int not null auto_increment primary key,  title 
 ```
 ### Próximos passos:
 Este pojeto pode ser melhorado das seguintes maneiras:
-    -Sanitizando o input dos usuários para previnir ataques de injeção de SQL.
-    -Adicionando um sistema de gerenciamento de arquivos que deleta as imagens removidas da pasta. Atualmente, elas são deletadas apenas da tabela.
+    -Sanitizando o input dos usuários para previnir ataques de injeção de SQL.  
+    -Adicionando um sistema de gerenciamento de arquivos que deleta as imagens removidas da pasta. Atualmente, elas são deletadas apenas da tabela.  
